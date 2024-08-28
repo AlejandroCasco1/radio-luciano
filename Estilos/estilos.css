@@ -1,0 +1,338 @@
+    :root {
+        --color-fondo: #e0e5ec;
+        --color-texto: #2d3436;
+        --color-primario: #FF4136;
+        --color-secundario: #FF851B;
+        --color-sombra: #babecc;
+        --color-resaltado: #ffffff;
+    }
+
+    [data-tema="oscuro"] {
+        --color-fondo: #2d3436;
+        --color-texto: #e0e5ec;
+        --color-primario: #FF4136;
+        --color-secundario: #FF851B;
+        --color-sombra: #1e2528;
+        --color-resaltado: #3a4244;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+        background-color: var(--color-fondo);
+        color: var(--color-texto);
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    #video-fondo {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+        object-fit: cover;
+        opacity: 0.1;
+    }
+
+    .contenedor-reproductor {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        position: relative;
+        z-index: 10;
+    }
+
+    .contenido-reproductor {
+        text-align: center;
+        padding: 30px;
+        width: 90%;
+        max-width: 320px;
+        border-radius: 20px;
+        background: var(--color-fondo);
+        box-shadow: 
+            8px 8px 16px var(--color-sombra), 
+            -8px -8px 16px var(--color-resaltado);
+    }
+
+    #botonReproducirPausar {
+        width: 80px;
+        height: 80px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        background-color: var(--color-fondo);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px auto;
+        box-shadow: 
+            6px 6px 12px var(--color-sombra), 
+            -6px -6px 12px var(--color-resaltado),
+            inset -2px -2px 5px var(--color-resaltado),
+            inset 2px 2px 5px var(--color-sombra);
+        transition: all 0.3s ease;
+    }
+
+    #botonReproducirPausar:active {
+        box-shadow: 
+            inset 6px 6px 12px var(--color-sombra), 
+            inset -6px -6px 12px var(--color-resaltado);
+    }
+
+    #botonReproducirPausar svg {
+        width: 40px;
+        height: 40px;
+        fill: var(--color-texto);
+    }
+
+    .metadatos {
+        margin-top: 20px;
+    }
+
+    #artista {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 10px 0;
+    }
+
+    #cancion {
+        font-size: 16px;
+        font-weight: 400;
+        margin: 5px 0;
+    }
+
+    #controlVolumen {
+        width: 80%;
+        max-width: 200px;
+        margin-top: 20px;
+        -webkit-appearance: none;
+        background: transparent;
+    }
+
+    #controlVolumen::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 8px;
+        background: var(--color-fondo);
+        border-radius: 4px;
+        box-shadow: 
+            inset 2px 2px 4px var(--color-sombra), 
+            inset -2px -2px 4px var(--color-resaltado);
+    }
+
+    #controlVolumen::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 24px;
+        width: 24px;
+        border-radius: 50%;
+        background: var(--color-fondo);
+        cursor: pointer;
+        margin-top: -8px;
+        box-shadow: 
+            4px 4px 8px var(--color-sombra), 
+            -4px -4px 8px var(--color-resaltado);
+    }
+
+    #imagen-reproduciendo {
+        width: 180px;
+        height: 180px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        box-shadow: 
+            6px 6px 12px var(--color-sombra), 
+            -6px -6px 12px var(--color-resaltado);
+        object-fit: cover;
+    }
+
+    #estado {
+        margin-top: 15px;
+        font-size: 14px;
+        color: var(--color-primario);
+    }
+
+    #visualizador-audio {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 320px;
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        z-index: 30;
+        pointer-events: none;
+    }
+
+    .barra {
+        width: calc(100% / 30 - 2px);
+        background: var(--color-texto);
+        transition: height 0.1s ease;
+        border-radius: 2px;
+    }
+
+    #ecualizador {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+        height: 150px;
+        width: 100%;
+        margin-top: 20px;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+
+    .control-ecualizador {
+        width: 20px;
+        height: 100px;
+        -webkit-appearance: slider-vertical;
+        writing-mode: bt-lr;
+        margin: 0 5px;
+    }
+
+    .control-ecualizador::-webkit-slider-runnable-track {
+        width: 8px;
+        background: var(--color-fondo);
+        border-radius: 4px;
+        box-shadow: 
+            inset 2px 2px 4px var(--color-sombra), 
+            inset -2px -2px 4px var(--color-resaltado);
+    }
+
+    .control-ecualizador::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background: var(--color-fondo);
+        cursor: pointer;
+        box-shadow: 
+            4px 4px 8px var(--color-sombra), 
+            -4px -4px 8px var(--color-resaltado);
+    }
+
+    .etiqueta-ecualizador {
+        text-align: center;
+        font-size: 10px;
+        margin-top: 5px;
+        white-space: nowrap;
+    }
+
+    #alternarMenu, #alternarEstaciones {
+        position: fixed;
+        padding: 10px 15px;
+        background-color: var(--color-fondo);
+        color: var(--color-texto);
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 
+            4px 4px 8px var(--color-sombra), 
+            -4px -4px 8px var(--color-resaltado);
+        transition: all 0.3s ease;
+        z-index: 1000;
+    }
+
+    #alternarMenu {
+        top: 20px;
+        right: 20px;
+    }
+
+    #alternarEstaciones {
+        top: 20px;
+        left: 20px;
+    }
+
+    #alternarMenu:active, #alternarEstaciones:active {
+        box-shadow: 
+            inset 4px 4px 8px var(--color-sombra), 
+            inset -4px -4px 8px var(--color-resaltado);
+    }
+
+    #listaMenu, #listaEstaciones {
+        display: none;
+        position: fixed;
+        top: 70px;
+        background-color: var(--color-fondo);
+        border-radius: 10px;
+        box-shadow: 
+            4px 4px 8px var(--color-sombra), 
+            -4px -4px 8px var(--color-resaltado);
+        padding: 10px;
+        z-index: 1000;
+    }
+
+    #listaMenu {
+        right: 20px;
+    }
+
+    #listaEstaciones {
+        left: 20px;
+    }
+
+    #listaMenu button, #listaEstaciones button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        background-color: var(--color-fondo);
+        color: var(--color-texto);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 
+            2px 2px 4px var(--color-sombra), 
+            -2px -2px 4px var(--color-resaltado);
+        transition: all 0.3s ease;
+    }
+
+    #listaMenu button:active, #listaEstaciones button:active {
+        box-shadow: 
+            inset 2px 2px 4px var(--color-sombra), 
+            inset -2px -2px 4px var(--color-resaltado);
+    }
+
+    #titulo-principal {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--color-texto);
+        background-color: var(--color-fondo);
+        padding: 10px 20px;
+        border-radius: 15px;
+        box-shadow: 
+            4px 4px 8px var(--color-sombra), 
+            -4px -4px 8px var(--color-resaltado);
+        z-index: 1000;
+    }
+
+    @media (max-width: 768px) {
+        .enlaces-sociales {
+            left: 10px;
+        }
+
+        .enlaces-sociales a {
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+        }
+
+        #titulo-principal {
+            font-size: 20px;
+            padding: 8px 16px;
+        }
+    }

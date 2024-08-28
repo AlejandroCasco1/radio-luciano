@@ -1,0 +1,56 @@
+<html><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emisoras Radio</title>
+<link href="./Estilos/estilos.css" rel="stylesheet">
+<link href="./Imagenes/icono.png" rel="icon">
+</head>
+<body>
+
+<h1 id="titulo-principal">Emisoras Luciano</h1>
+<button id="alternarMenu">Menú</button>
+<div id="listaMenu">
+    <button id="alternarTema">Cambiar Tema</button>
+    <button id="alternarEcualizador">Ecualizador</button>
+</div>
+<button id="alternarEstaciones">Cambiar Estación</button>
+
+<!-- Desde data-url se cargan las direcciones de las emisoras y en data-cover se pueden cargar las portadas -->
+
+<div id="listaEstaciones">
+    <button data-url="https://buecrplb01.cienradios.com.ar/Mitre790.aac" data-cover="https://cdn2.iconfinder.com/data/icons/luchesa-vol-8/128/Radio-512.png">Radio Mitre</button>
+    <button data-url="https://buecrplb01.cienradios.com.ar/355chubutcomodororivadavia995.aac" data-cover="https://cdn2.iconfinder.com/data/icons/luchesa-vol-8/128/Radio-512.png">Radio Visión</button>
+    <button data-url="https://buecrplb01.cienradios.com.ar/9889cordobacarlospaz983.aac" data-cover="https://cdn2.iconfinder.com/data/icons/luchesa-vol-8/128/Radio-512.png">Carlos Paz</button>
+    <button data-url="https://buecrplb01.cienradios.com.ar/carveam850.aac" data-cover="https://cdn2.iconfinder.com/data/icons/luchesa-vol-8/128/Radio-512.png">Radio Carve</button>
+    <button data-url="https://buecrplb01.cienradios.com.ar/dellago_barix.aac" data-cover="https://cdn2.iconfinder.com/data/icons/luchesa-vol-8/128/Radio-512.png">FM Del Lago</button>
+    <button data-url="https://buecrplb01.cienradios.com.ar/la100_brl_barix.aac" data-cover="https://cdn2.iconfinder.com/data/icons/luchesa-vol-8/128/Radio-512.png">La 100</button>
+    <button data-url="https://buecrplb01.cienradios.com.ar/mitre_mdq.mp3" data-cover="https://cdn2.iconfinder.com/data/icons/luchesa-vol-8/128/Radio-512.png">Mar del Plata</button>
+    <button data-url="https://buecrplb01.cienradios.com.ar/pelagatos.mp3" data-cover="https://cdn2.iconfinder.com/data/icons/luchesa-vol-8/128/Radio-512.png">PelaGatos</button>
+</div>
+<div class="contenedor-reproductor">
+    <div class="contenido-reproductor">
+        <img id="imagen-reproduciendo" src="https://cdn2.iconfinder.com/data/icons/luchesa-vol-8/128/Radio-512.png" alt="Reproduciendo ahora">
+        <div class="metadatos">
+            <h2 id="artista">Radio Mitre</h2><h3 id="cancion">AM 790</h3></div>
+        <button id="botonReproducirPausar"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        <input type="range" id="controlVolumen" min="0" max="1" step="0.1" value="1"><div id="estado"></div>
+        <div id="ecualizador" style="display: none;"><div>
+                <input type="range" class="control-ecualizador" min="-12" max="12" value="0" id="eq32"><div class="etiqueta-ecualizador">32Hz</div></div><div>
+                <input type="range" class="control-ecualizador" min="-12" max="12" value="0" id="eq64"><div class="etiqueta-ecualizador">64Hz</div></div><div>
+                <input type="range" class="control-ecualizador" min="-12" max="12" value="0" id="eq125"><div class="etiqueta-ecualizador">125Hz</div></div><div>
+                <input type="range" class="control-ecualizador" min="-12" max="12" value="0" id="eq250"><div class="etiqueta-ecualizador">250Hz</div></div><div>
+                <input type="range" class="control-ecualizador" min="-12" max="12" value="0" id="eq500"><div class="etiqueta-ecualizador">500Hz</div></div><div>
+                <input type="range" class="control-ecualizador" min="-12" max="12" value="0" id="eq1k"><div class="etiqueta-ecualizador">1kHz</div></div><div>
+                <input type="range" class="control-ecualizador" min="-12" max="12" value="0" id="eq2k"><div class="etiqueta-ecualizador">2kHz</div></div><div>
+                <input type="range" class="control-ecualizador" min="-12" max="12" value="0" id="eq4k"><div class="etiqueta-ecualizador">4kHz</div></div><div>
+                <input type="range" class="control-ecualizador" min="-12" max="12" value="0" id="eq8k"><div class="etiqueta-ecualizador">8kHz</div></div><div>
+                <input type="range" class="control-ecualizador" min="-12" max="12" value="0" id="eq16k"><div class="etiqueta-ecualizador">16kHz</div></div></div></div>
+</div>
+
+<div id="visualizador-audio">
+</div>
+
+<script src="./Scripts/jquery.min.js"></script>
+<script src="./Scripts/funciones.min.js"></script>
+<script src="./Scripts/data.min.js"></script>
+</body>
+</html>
